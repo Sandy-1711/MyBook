@@ -66,7 +66,7 @@ const Login = () => {
                     <input required onChange={handleChange} value={formData.username} name='username' type="text" placeholder="Username" />
                     <input required onChange={handleChange} name='password' value={formData.password} type="password" placeholder="Password" />
                     <button onClick={handleClick}>Login</button>
-                    <p>Not registered yet? <a href="/signup">Register</a></p>
+                    <p>Not registered yet? <a href="/#/signup">Register</a></p>
                 </form>
             </div>}
         </div>
