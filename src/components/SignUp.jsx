@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import { useNavigate } from 'react-router-dom';
 const SignUp = () => {
     var [formData, setFormData] = useState({
         username: "",
@@ -9,6 +10,7 @@ const SignUp = () => {
     var [loading, setLoading] = useState(false);
     var [created, setCreated] = useState(false);
     var [image, setImage] = useState(null);
+    const navigate=useNavigate();
     async function postForm(profpic) {
         setLoading(true);
         await fetch('https://mybookapi.sandeepsingh126.repl.co/api/auth/signup', {
@@ -83,7 +85,9 @@ const SignUp = () => {
                     </label>
                     <button onClick={handleClick}>SignUp</button>
                     {created && <h2 style={{ color: 'red',textAlign:'center' }}>Account Created</h2>}
-                    <p>Already a user? <a href='/#/login'>Login</a></p>
+                    <p>Already a user? <a onClick={function(){
+                        navigate('/login')
+                    }}>Login</a></p>
                 </form>
             </div>}
         </div>
