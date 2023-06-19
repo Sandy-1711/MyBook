@@ -83,7 +83,7 @@ const SignUp = () => {
                     </label>
                     <button onClick={handleClick}>SignUp</button>
                     {created && <h2 style={{ color: 'red',textAlign:'center' }}>Account Created</h2>}
-                    <p>Already a user? <a href='MyBook/#/login'>Login</a></p>
+                    <p>Already a user? <a href='/#/login'>Login</a></p>
                 </form>
             </div>}
         </div>
