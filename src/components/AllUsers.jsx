@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Header from './Header'
 import { Avatar } from '@mui/material'
+import { useNavigate } from 'react-router-dom';
 const AllUsers = () => {
     const user = JSON.parse(localStorage.getItem('user'));
     var [loading, setLoading] = useState(false);
     var [users, setUsers] = useState([]);
+    const navigate=useNavigate();
     async function fetchData() {
         setLoading(true);
         await fetch('https://mybookapi.sandeepsingh126.repl.co/api/user/' + user._id + '/finduser', {
@@ -29,7 +31,12 @@ const AllUsers = () => {
     }, [])
     return (
         <div>
-
+            {
+                !user.isAdmin && function(){
+                    alert("Not an admin, redirecting to homepage");
+                    navigate('/');
+                }
+            }
             {
                 user.isAdmin &&
                 <div>
