@@ -28,15 +28,14 @@ const AllUsers = () => {
     }
     useEffect(function () {
         fetchData()
+        if(!user.isAdmin)
+        {
+            alert("Not an admin, redirecting to home page");
+            navigate('/');
+        }
     }, [])
     return (
         <div>
-            {
-                !user.isAdmin && function(){
-                    alert("Not an admin, redirecting to homepage");
-                    navigate('/');
-                }
-            }
             {
                 user.isAdmin &&
                 <div>
