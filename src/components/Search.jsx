@@ -1,13 +1,13 @@
-import React, {  useState } from 'react'
+import React, { useState } from 'react'
 import SearchIcon from '@mui/icons-material/Search';
 import Header from './Header';
 import { Avatar, Button } from '@mui/material'
 
 const Search = () => {
-  var [loading,setLoading]=useState(false);
+  var [loading, setLoading] = useState(false);
   var [show, setShow] = useState(false);
   const user = JSON.parse(localStorage.getItem('user'));
-  var [data, setData] = useState(searchUser);
+  var [data, setData] = useState({});
   var [search, setSearch] = useState('');
   function handleChange(e) {
     setSearch(e.target.value);
@@ -21,6 +21,12 @@ const Search = () => {
         'token': 'Bearer ' + user.token,
       }
     }).then(function (response) {
+      if (response.status === 200) {
+        setShow(true);
+      }
+      else{
+        alert('No user found');
+      }
       return response.json();
     }).then(function (json) {
       setData(json)
@@ -32,11 +38,10 @@ const Search = () => {
   }
 
 
-  
+
   function handleClick(e) {
     e.preventDefault();
     searchUser();
-    setShow(true);
   }
 
   async function unfollow() {
@@ -50,6 +55,7 @@ const Search = () => {
       if (response.status === 204) {
         // console.log(response.status);
         searchUser();
+        document.querySelector('.followunfollow').setAttribute('disabled',false);
 
       }
       return response.json();
@@ -71,6 +77,7 @@ const Search = () => {
     }).then(function (response) {
       if (response.status === 201) {
         searchUser();
+        document.querySelector('.followunfollow').setAttribute('disabled',false);
 
       }
       return response.json();
@@ -84,6 +91,7 @@ const Search = () => {
 
 
   function handleFollow() {
+    document.querySelector('.followunfollow').setAttribute('disabled',true);
     if (!data.isFollower) {
       follow();
     }
@@ -125,8 +133,8 @@ const Search = () => {
                   <p>{data.username}</p>
                   {/* {console.log(data.isFollower)} */}
                   {data.isFollower === 2 && null}
-                  {data.isFollower===true && <Button onClick={handleFollow} variant="contained">Unfollow</Button>}
-                  {data.isFollower===false && <Button onClick={handleFollow} variant="contained">Follow</Button>}
+                  {data.isFollower === true && <Button className='followunfollow' onClick={handleFollow} variant="contained">Unfollow</Button>}
+                  {data.isFollower === false && <Button className='followunfollow' onClick={handleFollow} variant="contained">Follow</Button>}
 
                 </div>
                 <div className='numData'>

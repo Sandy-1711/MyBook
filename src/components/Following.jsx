@@ -17,10 +17,10 @@ const Following = () => {
         'token': 'Bearer ' + user.token,
       }
     }).then(function (response) {
-      setLoading(false);
       return response.json();
     }).then(function (json) {
       setFollowing(json);
+      setLoading(false);
       return json;
     }).catch(function (err) {
       console.log(err);

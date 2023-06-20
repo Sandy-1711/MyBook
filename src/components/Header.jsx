@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
@@ -10,6 +10,11 @@ const Header = () => {
     const history=useLocation();
     const path=history.pathname.substring(1);
     // console.log(path);
+    var user;
+    useEffect(function(){
+        user=JSON.parse(localStorage.getItem('user'));
+        
+    })
     return (
         <div className='header'>
             <div className='logo'>

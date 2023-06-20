@@ -33,11 +33,12 @@ const Profile = () => {
         'token': 'Bearer ' + user.token
       }
     }).then(function (response) {
-      setLoading(false);
+      
       return response.json();
     }).then(function (json) {
 
-      setUserProfile(json)
+      setUserProfile(json);
+      setLoading(false);
       return json;
 
     }).catch(function (err) {
@@ -99,6 +100,7 @@ const Profile = () => {
   }
 
   async function fetchAfterUpdate(newusername) {
+    
     var { username, ...others } = user;
     var obj = { username: newusername.username, ...others };
     localStorage.setItem('user', JSON.stringify(obj));

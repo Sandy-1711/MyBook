@@ -20,7 +20,10 @@ const UpdateProfile = (props) => {
             // console.log(response);
             props.setLoading(false);
             props.setUpdateProfile();
-            await props.fetch(obj);
+            if (changeUsername) {
+
+                await props.fetch(obj);
+            }
             await props.fetchProfile();
             // navigate('/profile');
             return response.json();
@@ -51,7 +54,7 @@ const UpdateProfile = (props) => {
                 reader.readAsDataURL(file);
                 reader.onloadend = async () => {
                     newprofilephoto = reader.result;
-                    obj={profilePicture:newprofilephoto};
+                    obj = { profilePicture: newprofilephoto };
                     update(obj);
                 }
             }
@@ -94,7 +97,7 @@ const UpdateProfile = (props) => {
                 {changeProfilePicture && <input type='file' name='profilePicture' required />}
                 <button onClick={handleClick}>Update</button>
             </form>}
-            <div className='shutOff' ><CancelIcon onClick={function(){
+            <div className='shutOff' ><CancelIcon onClick={function () {
                 props.setUpdateProfile(false);
             }} /></div>
         </div>

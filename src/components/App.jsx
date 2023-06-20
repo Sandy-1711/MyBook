@@ -9,6 +9,7 @@ import Profile from './Profile';
 import Followers from './Followers';
 import Following from './Following';
 import Search from './Search';
+import AllUsers from './AllUsers';
 // import Header from './Header';
 // import { AuthContext } from '../context/AuthContext';
 // const ProtectedRoute=({path,element})=>{
@@ -22,7 +23,7 @@ import Search from './Search';
 // };
 const App = () => {
   // const { user } = useContext(AuthContext);
-  // const user=JSON.parse(localStorage.getItem('user'));
+  const user=JSON.parse(localStorage.getItem('user'));
   return (
     <HashRouter>
       <Routes>
@@ -30,6 +31,7 @@ const App = () => {
 
         <Route path='/'>
           <Route index element={<Home/>} />
+          <Route path="/allusers" element={<AllUsers/>}/>
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path="/profile" element={<Profile/>} />

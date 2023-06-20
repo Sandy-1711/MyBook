@@ -23,6 +23,9 @@ const Login = () => {
             if (response.status === 200) {
                 navigate('/')
             }
+            else{
+                alert('Error signing in');
+            }
             return response.json();
 
         }).then(function (json) {
