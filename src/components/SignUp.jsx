@@ -124,7 +124,7 @@ const SignUp = () => {
                     <label htmlFor="profilePic">
                         Upload Profile Image
                         <AccountBoxIcon />
-                        <span>{image}</span>
+                        <span style={{width:'140px',wordWrap:'break-word'}}>{image}</span>
                         <input accept="image/png, image/gif, image/jpeg" id='profilePic' onChange={function (e) { setImage(e.target.value.substring(12)) }} type="file" name='profilePic' />
                     </label>
                     <button onClick={handleClick}>SignUp</button>
