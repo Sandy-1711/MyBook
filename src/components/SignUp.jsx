@@ -1,4 +1,4 @@
-import React, {useContext, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
@@ -36,7 +36,7 @@ const SignUp = () => {
                     method: 'POST',
                     mode: 'cors',
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({username:formData.username,password:formData.password})
+                    body: JSON.stringify({ username: formData.username, password: formData.password })
                 }).then(function (response) {
                     // console.log(response.status);
                     if (response.status === 200) {
@@ -71,36 +71,39 @@ const SignUp = () => {
         var profilePic = "";
         const reader = new FileReader();
         const file = document.querySelector("input[type=file]").files[0];
-        if(file.size>2097152)
-        {
-            alert('Chosen profile image is too big');
-            setFormData({
-                username: "",
-                password: "",
-                email: "",
-            })
-            setImage(null);
-            
-        }
-        else{
 
-            if (file) {
+
+
+        if (file) {
+            if (file.size > 2097152) {
+                alert('Chosen profile image is too big');
+                setFormData({
+                    username: "",
+                    password: "",
+                    email: "",
+                })
+                setImage(null);
+
+            }
+            else {
+
                 reader.readAsDataURL(file);
                 reader.onloadend = async () => {
                     profilePic = reader.result;
                     postForm(profilePic);
-                    
+
                 }
             }
-            else {
-                postForm("");
-            }
-            setFormData({
-                username: "",
-                password: "",
-                email: "",
-            })
         }
+        else {
+            postForm("");
+        }
+        setFormData({
+            username: "",
+            password: "",
+            email: "",
+        })
+
     }
     return (
         <div className='loginPage'>
