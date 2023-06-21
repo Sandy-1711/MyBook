@@ -42,7 +42,7 @@ const AllUsers = () => {
 
                     <Header />
                     <div className='contentArea'>
-                        {loading && <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+                        {loading && <div className='loader'><div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
                             <div class="wheel"></div>
                             <div class="hamster">
                                 <div class="hamster__body">
@@ -59,7 +59,7 @@ const AllUsers = () => {
                                 </div>
                             </div>
                             <div class="spoke"></div>
-                        </div>}
+                        </div></div>}
                         {!loading && <div className='followersPage'>
                             <h1>All Users</h1>
                             <div className='followers'>
