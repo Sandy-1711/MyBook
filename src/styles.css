@@ -504,7 +504,7 @@ label {
 .wheel-and-hamster {
     --dur: 1s;
     position: absolute;
-    top: 50%;
+    top: 35dvh;
     left: 30dvw;
     width: 12em;
     height: 12em;
