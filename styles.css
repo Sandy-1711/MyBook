@@ -500,12 +500,16 @@ label {
     color: var(--sixty);
 }
 
+.loader{
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .wheel-and-hamster {
     --dur: 1s;
-    position: absolute;
-    top: 35dvh;
-    left: 30dvw;
+    position: relative;
     width: 12em;
     height: 12em;
     font-size: 14px;
