@@ -6,7 +6,7 @@ const AllUsers = () => {
     const user = JSON.parse(localStorage.getItem('user'));
     var [loading, setLoading] = useState(false);
     var [users, setUsers] = useState([]);
-    const navigate=useNavigate();
+    const navigate = useNavigate();
     async function fetchData() {
         setLoading(true);
         await fetch('https://mybookapi.sandeepsingh126.repl.co/api/user/' + user._id + '/finduser', {
@@ -28,8 +28,7 @@ const AllUsers = () => {
     }
     useEffect(function () {
         fetchData()
-        if(!user.isAdmin)
-        {
+        if (!user.isAdmin) {
             alert("Not an admin, redirecting to home page");
             navigate('/');
         }
@@ -43,13 +42,24 @@ const AllUsers = () => {
 
                     <Header />
                     <div className='contentArea'>
-                        {loading && <section class="dots-container">
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                        </section>}
+                        {loading && <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+                            <div class="wheel"></div>
+                            <div class="hamster">
+                                <div class="hamster__body">
+                                    <div class="hamster__head">
+                                        <div class="hamster__ear"></div>
+                                        <div class="hamster__eye"></div>
+                                        <div class="hamster__nose"></div>
+                                    </div>
+                                    <div class="hamster__limb hamster__limb--fr"></div>
+                                    <div class="hamster__limb hamster__limb--fl"></div>
+                                    <div class="hamster__limb hamster__limb--br"></div>
+                                    <div class="hamster__limb hamster__limb--bl"></div>
+                                    <div class="hamster__tail"></div>
+                                </div>
+                            </div>
+                            <div class="spoke"></div>
+                        </div>}
                         {!loading && <div className='followersPage'>
                             <h1>All Users</h1>
                             <div className='followers'>
